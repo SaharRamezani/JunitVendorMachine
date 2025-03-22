@@ -14,9 +14,24 @@ public class DrinkVendingMachine {
     private float availableCredit = 0;
     private ArrayList<Snack> drinkList = new ArrayList<Snack>();
 
+    // Getter function for populateDrinkList
+    public ArrayList<Snack> getDrinkList() {
+        return drinkList;
+    }
+
+    // Getter function for getBrandName
+    public BRANDS getBrandName() {
+        return brandName;
+    }
+
+    // Getter function getAvailableCredit
+    public float getAvailableCredit() {
+        return availableCredit;
+    }
+
     public DrinkVendingMachine(){
         int size = BRANDS.values().length;
-        int index = (int)(Math.random()) * size;
+        int index = (int)(Math.random() * size);
 
         //Select random Brand
         this.brandName = BRANDS.values()[index];
@@ -65,7 +80,7 @@ public class DrinkVendingMachine {
 
     public void giveCredit(Person user, float credit){
         //TODO replace with Log4j
-        System.out.println("INFO: You have entered £"+credit);
+        System.out.println("INFO: You have entered ï¿½"+credit);
         this.availableCredit += user.getCredit(credit);
     }
 
