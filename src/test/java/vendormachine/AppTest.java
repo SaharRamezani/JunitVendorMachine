@@ -9,4 +9,9 @@ public class AppTest {
 	public void MainTest() {
 		App.main(null);
 	}
+
+	@Test
+	public void testAppConstructor() {
+		new App(); // covers the implicit constructor
+	}
 }
