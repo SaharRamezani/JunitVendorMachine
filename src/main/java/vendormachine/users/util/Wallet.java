@@ -44,7 +44,7 @@ public class Wallet {
     //===============================
 
     public float getAllCredit(){
-        return this.storedCredit;
+        return Math.round(this.storedCredit * 100.0f) / 100.0f;
     }
 
     public String getBrand(String band) {
