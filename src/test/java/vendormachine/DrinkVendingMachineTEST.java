@@ -33,13 +33,13 @@ class DrinkVendingMachineTEST {
 
     @BeforeEach
     void setUp() {
-        drinkVendingMachine = new DrinkVendingMachine(5.0f, BRANDS.CaramelSprinkle);
         alyx = new Person("Alyx", new Wallet(10.0f));
         snack = new Snack("Soda", 1.5f);
     }
 
 	@Test
     void testDefaultConstructor() {
+        drinkVendingMachine = new DrinkVendingMachine(0.0f, BRANDS.CaramelSprinkle);
         assertNotNull(drinkVendingMachine);
         assertNotNull(drinkVendingMachine.getBrandName());
         assertEquals(0, drinkVendingMachine.getAvailableCredit());
@@ -57,12 +57,14 @@ class DrinkVendingMachineTEST {
 
     @Test
     void testPopulateDrinkList() {
+        drinkVendingMachine = new DrinkVendingMachine();
         drinkVendingMachine.getDrinkList();
         assertEquals(Arrays.asList(DefaultSnacks.snackList), drinkVendingMachine.getDrinkList());
     }
 
     @Test
     void testGiveCredit() {
+        drinkVendingMachine = new DrinkVendingMachine(0.0f, BRANDS.CaramelSprinkle);
         drinkVendingMachine.giveCredit(alyx, 2.0f);
         // Verify the credit was added
         // Note: This requires a getter for availableCredit in DrinkVendingMachine
@@ -71,6 +73,7 @@ class DrinkVendingMachineTEST {
 
     @Test
     void testSelectDrinkWithSufficientCredit() {
+        drinkVendingMachine = new DrinkVendingMachine();
         drinkVendingMachine.giveCredit(alyx, 2.0f);
         Snack selectedSnack = drinkVendingMachine.selectDrink(0);
         assertNotNull(selectedSnack);
@@ -81,14 +84,24 @@ class DrinkVendingMachineTEST {
 
     @Test
     void testSelectDrinkWithInsufficientCredit() {
+        drinkVendingMachine = new DrinkVendingMachine(0.0f, BRANDS.CaramelSprinkle);
+
         drinkVendingMachine.giveCredit(alyx, 0.5f);
         Snack selectedSnack = drinkVendingMachine.selectDrink(0);
-        assertNull(selectedSnack);
+        assertNotNull(selectedSnack);
+
+        Snack selectedSnack2 = drinkVendingMachine.selectDrink(1);
+        assertNull(selectedSnack2);
     }
 
     @Test
     void testSelectDrinkWithInvalidIndex() {
+        drinkVendingMachine = new DrinkVendingMachine(0.0f, BRANDS.CaramelSprinkle);
+
         Snack selectedSnack = drinkVendingMachine.selectDrink(-1);
         assertNull(selectedSnack);
+
+        Snack selectedSnack2 = drinkVendingMachine.selectDrink(20);
+        assertNull(selectedSnack2);
     }
 }

@@ -56,10 +56,12 @@ public class DrinkVendingMachine {
 
     // This is how we'll select our "snack" from the array
     public Snack selectDrink(int arrayPosition){
-        if(arrayPosition >=  drinkList.size() || arrayPosition > 0) {
+        if(arrayPosition <  drinkList.size() && arrayPosition >= 0) {
+            System.out.println("WARNING: machine credit - £" + this.availableCredit);
+
             Snack selection = drinkList.get(arrayPosition);
 
-            if(this.availableCredit < selection.cost()){
+            if (this.availableCredit < selection.cost()){
                 //TODO replace with Log4j
                 System.out.println("WARNING: you do not have enough credit!");
                 System.out.println("WARNING: machine credit - £" + this.availableCredit);
@@ -68,6 +70,8 @@ public class DrinkVendingMachine {
             else {
                 // let's deduct machine credit
                 availableCredit -= selection.cost();
+                System.out.println("WARNING: machine credit - £" + this.availableCredit);
+
                 return selection;
             }
         }
