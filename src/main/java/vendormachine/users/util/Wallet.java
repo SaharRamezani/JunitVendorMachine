@@ -51,6 +51,11 @@ public class Wallet {
         return this.brand;
     }
 
+    // Get balance function 
+    public float getBalance() {
+        return this.storedCredit;
+    }
+
     //===============================
     //===  'set'ors
     //===============================

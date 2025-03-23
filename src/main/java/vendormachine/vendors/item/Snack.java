@@ -22,8 +22,15 @@ public class Snack implements Item{
         return this.price;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public float getPrice(){
+        return this.price;
+    }
+
     public void setValue(float cost){
         this.price = cost;
     }
-
 }

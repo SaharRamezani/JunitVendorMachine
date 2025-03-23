@@ -29,12 +29,10 @@ class DrinkVendingMachineTEST {
 
     private DrinkVendingMachine drinkVendingMachine;
     private Person alyx;
-    private Snack snack;
 
     @BeforeEach
     void setUp() {
         alyx = new Person("Alyx", new Wallet(10.0f));
-        snack = new Snack("Soda", 1.5f);
     }
 
 	@Test
